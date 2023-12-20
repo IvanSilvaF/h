@@ -29,7 +29,8 @@ def includeme(config):  # pylint: disable=too-many-statements
         traverse="/{username}",
     )
     # config.add_route("activity.user_event", "/user-event")
-
+    # expertReplay
+    config.add_route("expert_replay","/expert")
     # Admin
     config.add_route("admin.index", "/admin/")
     config.add_route("admin.admins", "/admin/admins")
