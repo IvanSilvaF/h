@@ -9,7 +9,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 # Build h js/css.
-COPY .babelrc gulpfile.mjs rollup.config.mjs ./
+COPY gulpfile.mjs rollup.config.mjs ./
 COPY h/static ./h/static
 RUN yarn build
 
