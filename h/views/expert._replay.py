@@ -1,17 +1,20 @@
+from h.i18n import TranslationString as _
+from pyramid.view import view_config, view_defaults
+from h import util, models, storage
+import os
 
-
-@view_defaults(route_name="expert_replay", renderer="h:templates/expert_replay/expert_replay.html.jinja2")
-class TestController:
+@view_defaults(route_name="account_expert_replay", renderer="h:templates/account/kmass-user-expert-replay.html.jinja2")
+class ExpertController:
     def __init__(self, request):
         self.request = request
 
     @view_config(request_method="GET")
     def printTEST(self):
 
-        test = self.request.db.query(models.Test).all()
-        print(test[0].name)
+        #test = self.request.db.query(models.Test).all()
+        #print(test[0].name)
 
         return {
-            "results": test,
+            "results": "hola expert replay",
             "zero_message": _("No annotations matched your search."),
         }
