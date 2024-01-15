@@ -464,12 +464,12 @@ def event(request):
         text_content=event["text_content"],
         base_url=event["base_url"],
         ip_address=request.client_addr,
-        interaction_context="",
-        event_source="",
-        x_path="",
+        interaction_context=event["interaction_context"],
+        event_source=event["event_source"],
+        x_path=event["x_path"],
         offset_x=event["offset_x"],
         offset_y=event["offset_y"],
-        doc_id="",
+        doc_id=event["doc_id"],
         region="",
         )
     return {
