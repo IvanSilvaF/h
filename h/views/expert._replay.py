@@ -3,7 +3,7 @@ from pyramid.view import view_config, view_defaults
 from h import util, models, storage
 import os
 
-@view_defaults(route_name="account_expert_replay", renderer="h:templates/account/kmass-user-expert-replay.html.jinja2")
+@view_defaults(route_name="account_expert_replay", renderer="h:templates/accounts/kmass-user-expert-replay.html.jinja2",is_authenticated=True)
 class ExpertController:
     def __init__(self, request):
         self.request = request
