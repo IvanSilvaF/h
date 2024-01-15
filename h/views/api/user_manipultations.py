@@ -467,8 +467,8 @@ def event(request):
         interaction_context="",
         event_source="",
         x_path="",
-        offset_x=0.0,
-        offset_y=0.0,
+        offset_x=event["offset_x"],
+        offset_y=event["offset_y"],
         doc_id="",
         region="",
         )
