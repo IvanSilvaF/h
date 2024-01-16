@@ -2,8 +2,8 @@
 
 {% block page_content %}
 <div>
-  <p>{{results}}</p>
-
+  {% for table_row in table_results %}
+    <p>{{table_row['task_name']}} </p>
+  {% endfor %}
 </div>
-
 {% endblock page_content %}
