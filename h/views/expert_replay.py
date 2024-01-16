@@ -19,7 +19,7 @@ class ExpertController:
         for result in fetch_result["table_result"]:
             json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
             table_results.append(json_item)
-        print("ER" + table_results)
+        print("ER ",table_results)
         return {
             "table_results": table_results,
             "zero_message": _("No annotations matched your search."),

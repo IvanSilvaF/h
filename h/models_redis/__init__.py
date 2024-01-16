@@ -169,7 +169,7 @@ def fetch_all_user_sessions(userid):
             if flag:
                 table_result.append(json_item)
                 auxSessionIds.append(json_item['doc_id'])
-    print("INIT " + table_result)
+    print("INIT ", table_result)
       
     return {
         "table_result": table_result,
