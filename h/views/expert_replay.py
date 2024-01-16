@@ -3,7 +3,7 @@ from pyramid.view import view_config, view_defaults
 from h import util, models, storage
 import os
 from h.models_redis import fetch_all_user_sessions
-
+import time
 
 @view_defaults(route_name="account_expert_replay", renderer="h:templates/accounts/kmass-user-expert-replay.html.jinja2",is_authenticated=True)
 class ExpertController:
@@ -19,7 +19,7 @@ class ExpertController:
         for result in fetch_result["table_result"]:
             json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
             table_results.append(json_item)
-
+        print("ER" + table_results)
         return {
             "table_results": table_results,
             "zero_message": _("No annotations matched your search."),
