@@ -27,7 +27,7 @@ class ExpertController:
     def processFlow(self):
         #session_id = self.request.params.get("id")
         sessionID=1
-
+        print("hola")
         fetch_result=fetch_all_user_events_by_session(userid=self.request.authenticated_userid, sessionID=sessionID)
 
         #order = self.request.params.get("order", ORDER)
@@ -43,6 +43,7 @@ class ExpertController:
         #    json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
         #    table_results.append(json_item)
         #print("ER ",table_results)
+        print("chao")    
         return {
             "table_results": "PROCCESS FLOW",
             "zero_message": _("No annotations matched your search."),
