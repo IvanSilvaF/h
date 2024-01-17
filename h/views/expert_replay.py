@@ -26,20 +26,14 @@ class ExpertController:
     @view_config(route_name="process_flow", request_method="GET", renderer="h:templates/accounts/kmass-user-process-flow.html.jinja2", is_authenticated=True)
     def processFlow(self):
         #session_id = self.request.params.get("id")
-        sessionID="1"
-        print("hola")
-        fetch_result=fetch_all_user_events_by_session(userid=self.request.authenticated_userid, sessionID=sessionID)
+        sessionID="4"
 
-        #order = self.request.params.get("order", ORDER)
-        #recevived the tast name and session ID
-        #get all the events 
-        #process the event
-        #Send the result
-        #fetch_result=fetch_all_user_sessions(userid=self.request.authenticated_userid)
+        fetch_result=fetch_all_user_events_by_session(userid=self.request.authenticated_userid, sessionID=sessionID)
 
         table_results=[]
         for result in fetch_result["table_result"]:
-            print(result)
+            print(result['event_type']+" - "+result['tag_name']+" - "+result['text_content']+" - "+result['event_source']+" - "+result['offset_x']+" - "+result['offset_y'])
+        
         #    json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
         #    table_results.append(json_item)
         #print("ER ",table_results)

@@ -152,13 +152,13 @@ def fetch_all_user_event(userid, sortby):
         }
 
 def fetch_all_user_events_by_session(userid,sessionID):
-    result = UserEvent.find((UserEvent.userid == userid) & (UserEvent.doc_id == sessionID)).all()
+    result = UserEvent.find((UserEvent.userid == userid) & (UserEvent.doc_id == sessionID)).sort_by("timestamp").all()
     #.sort_by("-timestamp")
     table_result=[]
     for index, item in enumerate(result):
         json_item = {'id': index, **get_user_event(item.pk)}
         table_result.append(json_item)
-    print(table_result)  
+    #print(table_result)  
     return {
         "table_result": table_result,
         "total": len(result),
