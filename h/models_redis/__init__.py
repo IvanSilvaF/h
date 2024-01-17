@@ -152,7 +152,7 @@ def fetch_all_user_event(userid, sortby):
         }
 
 def fetch_all_user_events_by_session(userid,sessionID):
-    result = UserEvent.find((UserEvent.userid == userid) & (UserEvent.doc_id ==sessionID)).sort_by("desc").all()
+    result = UserEvent.find((UserEvent.userid == userid) & (UserEvent.doc_id ==sessionID)).sort_by("-timestamp").all()
 
     table_result=[]
     for index, item in enumerate(result):
