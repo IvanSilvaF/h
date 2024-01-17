@@ -22,14 +22,13 @@ class ExpertController:
         return {
             "table_results": table_results,
             "zero_message": _("No annotations matched your search."),
-            "request": self.request,
         }
     @view_config(route_name="process_flow", request_method="GET", renderer="h:templates/accounts/kmass-user-process-flow.html.jinja2", is_authenticated=True)
     def processFlow(self):
         print("hola")
         session_id = self.request.params.get("id")
-        task_name = self.request.params.get("name")
-        print(str(session_id)+" - "+str(task_name))
+        #task_name = self.request.params.get("name")
+        print(str(session_id))
         #order = self.request.params.get("order", ORDER)
         #recevived the tast name and session ID
         #get all the events 
