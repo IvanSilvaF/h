@@ -3,7 +3,7 @@
 {% block page_content %}
 <div>
   {% for table_row in table_results %}
-    <p>{{table_row['task_name']}} </p>
+    <a href="{{request.route_url('process_flow' , id=table_row['session_id'], name=table_row['task_name']) }}">{{table_row['task_name']}} </a>
   {% endfor %}
 </div>
 {% endblock page_content %}
