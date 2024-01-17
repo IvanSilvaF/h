@@ -32,7 +32,7 @@ class ExpertController:
 
         table_results=[]
         for result in fetch_result["table_result"]:
-            print(result['event_type']+" - "+result['tag_name']+" - "+result['text_content']+" - "+result['event_source']+" - "+result['offset_x']+" - "+result['offset_y'])
+            print(result['event_type']+" - "+result['tag_name']+" - "+result['text_content']+" - "+result['event_source']+" - "+str(result['offset_x'])+" - "+str(result['offset_y']))
         
         #    json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
         #    table_results.append(json_item)
