@@ -39,7 +39,7 @@ class ExpertController:
         for result in fetch_result["table_result"]:
             json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
             table_results.append(json_item)
-            
+
         return {
             "table_results": table_results,
             "zero_message": _("No annotations matched your search."),
@@ -58,10 +58,12 @@ class ExpertController:
             if lastEvent!= fetch_result["table_result"][i]['event_type']:
                 auxTable.append(fetch_result["table_result"][i])
                 lastEvent = fetch_result["table_result"][i]['event_type']
-            elif lastEvent!="scroll" or lastEvent!="keydown":
+                print("IF "+lastEvent)
+            elif lastEvent!="scroll" and lastEvent!="keydown":
+                print("ELSE IF "+lastEvent)
                 auxTable.append(fetch_result["table_result"][i])
                 lastEvent = fetch_result["table_result"][i]['event_type']
-        print(auxTable)
+        #print(auxTable)
         #table_results=[]
         #auxText=""
         #positionText=""
