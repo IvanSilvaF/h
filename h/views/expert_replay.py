@@ -26,7 +26,7 @@ class ExpertController:
     @view_config(route_name="process_flow", request_method="GET", renderer="h:templates/accounts/kmass-user-process-flow.html.jinja2", is_authenticated=True)
     def processFlow(self):
         #session_id = self.request.params.get("id")
-        sessionID=1
+        sessionID="1"
         print("hola")
         fetch_result=fetch_all_user_events_by_session(userid=self.request.authenticated_userid, sessionID=sessionID)
 
