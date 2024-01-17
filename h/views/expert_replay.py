@@ -63,7 +63,7 @@ class ExpertController:
                 print("ELSE IF "+lastEvent)
                 auxTable.append(fetch_result["table_result"][i])
                 lastEvent = fetch_result["table_result"][i]['event_type']
-        #print(auxTable)
+        print(auxTable)
         #table_results=[]
         #auxText=""
         #positionText=""
