@@ -77,6 +77,8 @@ class ExpertController:
                 auxText, positionText=getTextbyEvent(result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y'],positionText)
                 table_results.append(str(cont)+") "+ auxText)
                 cont=cont+1
+                positionText=""
+                positionText=""
         #    print(result['event_type']+" - "+result['tag_name']+" - "+result['text_content']+" - "+result['event_source']+" - "+str(result['offset_x'])+" - "+str(result['offset_y']))
         #for result in fetch_result["table_result"]:
         #    if not table_results: table_results.append("Log in to your Moodle site")
