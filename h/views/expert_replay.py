@@ -18,14 +18,14 @@ def getTextbyEvent(event_type,tag_name,text_content,viewPort,offset_x,offset_y,p
     if event_type=="click":
         if positionText=="":
             positionText=getPositionViewport(int(viewPort.split("-")[0]),int(viewPort.split("-")[1]),offset_x,offset_y)
-            return "Click on "+ text_content +" at the"+ positionText +" of the page"
-        return "Click on "+ text_content
+            return "Click on "+ text_content +" at the"+ positionText +" of the page",positionText
+        return "Click on "+ text_content, positionText
     elif event_type=="scroll":
-        return "Scroll Down in the web page"
+        return "Scroll Down in the web page", positionText
     elif event_type=="keydown":
         return "Write the contend you need it.",positionText
     else:
-        print(event_type+ " MISS EVENT")
+        return "ERROR ",positionText
 class ExpertController:
     def __init__(self, request):
         self.request = request
@@ -63,7 +63,7 @@ class ExpertController:
                 print("ELSE IF "+lastEvent)
                 auxTable.append(fetch_result["table_result"][i])
                 lastEvent = fetch_result["table_result"][i]['event_type']
-        print(auxTable)
+        #print(auxTable)
         table_results=[]
         auxText=""
         positionText=""
