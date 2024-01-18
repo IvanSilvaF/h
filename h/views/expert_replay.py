@@ -21,9 +21,9 @@ def getTextbyEvent(event_type,tag_name,text_content,viewPort,offset_x,offset_y,p
             return "Click on "+ text_content +" at the"+ positionText +" of the page"
         return "Click on "+ text_content
     elif event_type=="scroll":
-        print("f")
+        return "Scroll Down in the web page"
     elif event_type=="keydown":
-        print("f")
+        return "Write the contend you need it.",positionText
     else:
         print(event_type+ " MISS EVENT")
 class ExpertController:
@@ -64,14 +64,19 @@ class ExpertController:
                 auxTable.append(fetch_result["table_result"][i])
                 lastEvent = fetch_result["table_result"][i]['event_type']
         print(auxTable)
-        #table_results=[]
-        #auxText=""
-        #positionText=""
-        #for i in range(len(fetch_result["table_result"])):
-        #    result= fetch_result["table_result"][i]
-        #    if not table_results: table_results.append("Log in to your Moodle site")
-        #    if result['event_type']!="OPEN" and result['event_type']!="beforeunload":
-        #        auxText, positionText=getTextbyEvent(result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y'],positionText)
+        table_results=[]
+        auxText=""
+        positionText=""
+        cont=1
+        for i in range(len(fetch_result["table_result"])):
+            result= fetch_result["table_result"][i]
+            if not table_results: 
+                table_results.append(str(cont)+") Log in to your Moodle site")
+                cont=cont+1
+            if result['event_type']!="OPEN" and result['event_type']!="beforeunload":
+                auxText, positionText=getTextbyEvent(result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y'],positionText)
+                table_results.append(str(cont)+") "+ auxText)
+                cont=cont+1
         #    print(result['event_type']+" - "+result['tag_name']+" - "+result['text_content']+" - "+result['event_source']+" - "+str(result['offset_x'])+" - "+str(result['offset_y']))
         #for result in fetch_result["table_result"]:
         #    if not table_results: table_results.append("Log in to your Moodle site")
@@ -85,7 +90,7 @@ class ExpertController:
         #print("ER ",table_results)
         print("chao")    
         return {
-            "table_results": "PROCCESS FLOW",
+            "table_results": table_results,
             "zero_message": _("No annotations matched your search."),
         }
     
