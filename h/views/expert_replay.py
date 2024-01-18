@@ -18,7 +18,7 @@ def getTextbyEvent(event_type,tag_name,text_content,viewPort,offset_x,offset_y,p
     if event_type=="click":
         if positionText=="":
             positionText=getPositionViewport(int(viewPort.split("-")[0]),int(viewPort.split("-")[1]),offset_x,offset_y)
-            return "Click on "+ text_content +" at the"+ positionText +" of the page",positionText
+            return "Click on '"+ text_content +"' at the "+ positionText +" of the page",positionText
         return "Click on "+ text_content, positionText
     elif event_type=="scroll":
         return "Scroll Down in the web page", positionText
@@ -68,8 +68,8 @@ class ExpertController:
         auxText=""
         positionText=""
         cont=1
-        for i in range(len(fetch_result["table_result"])):
-            result= fetch_result["table_result"][i]
+        for i in range(len(auxTable)):
+            result= auxTable[i]
             if not table_results: 
                 table_results.append(str(cont)+") Log in to your Moodle site")
                 cont=cont+1
@@ -89,8 +89,7 @@ class ExpertController:
         
         #    json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
         #    table_results.append(json_item)
-        #print("ER ",table_results)
-        print("chao")    
+        #print("ER ",table_results)   
         return {
             "table_results": table_results,
             "zero_message": _("No annotations matched your search."),
