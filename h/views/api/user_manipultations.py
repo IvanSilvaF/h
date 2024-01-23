@@ -29,6 +29,7 @@ from h.security import Permission
 from h.views.api.config import api_config
 from h.models_redis import UserEvent, Rating
 from h.models_redis import get_highlights_from_openai, create_user_event, save_in_redis, add_user_event
+from h.models_redis import fetch_all_user_sessions,fetch_all_user_events_by_session
 
 def split_user(userid):
     """
@@ -443,6 +444,32 @@ def pull_recommendation(request):
     # check value
     redis_ret.update(rating)
     return redis_ret
+
+#Ivan
+@api_config(
+    versions=["v1", "v2"],
+    route_name="api.expert_replay",
+    request_method="GET",
+    permission=Permission.Annotation.CREATE,
+    link_name="expert_replay",
+    description="get the session of the expert replay",
+) 
+def expert_replay(request):
+    userID=request.authenticated_userid
+
+    fetch_result=fetch_all_user_sessions(userid=userID)
+
+    table_results=[]
+    for result in fetch_result["table_result"]:
+        json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
+        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=result['doc_id'])
+        #result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y']
+        table_results.append(json_item)
+    #print(userID)
+    return {
+            "succ": "test API Ivan"
+        }
+#Ivan
 
 
 @api_config(
