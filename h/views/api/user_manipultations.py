@@ -455,7 +455,7 @@ def pull_recommendation(request):
     description="get the session of the expert replay",
 ) 
 def expert_replay(request):
-    jsonResult=""
+    jsonResult='"data": ['
     #userID=request.authenticated_userid
     userID="acct:admin@localhost"
     #print("USER: "+userID)
@@ -464,13 +464,13 @@ def expert_replay(request):
     table_results=[]
     for result in resultAllEvents["table_result"]:
         #json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
-        jsonResult=jsonResult+"'task_name:'"+result['interaction_context']+", 'steps:' ["
+        jsonResult=jsonResult+'"task_name":' +result['interaction_context']+', "steps": ['
         fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=result['doc_id'])
         #for result in fetch_result["table_result"]:
         #     jsonResult=jsonResult+"{'type':" + result['event_type'] +",'description: '"+result['text_content']+"},"
         jsonResult=jsonResult+"]"
         #result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y']
-    jsonResult=jsonResult+"}"
+    jsonResult=jsonResult+"]}"
     print(jsonResult)
     return {
             jsonResult
