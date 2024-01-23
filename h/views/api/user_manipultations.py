@@ -467,7 +467,7 @@ def expert_replay(request):
         jsonResult=jsonResult+"'task_name:'"+result['interaction_context']+", 'steps:' ["
         fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=result['doc_id'])
         for result in fetch_result["table_result"]:
-             jsonResult=jsonResult+"{'type':" + result['event_type']+ +",'description: '"+result['text_content']+"},"
+             jsonResult=jsonResult+"{'type':" + result['event_type'] +",'description: '"+result['text_content']+"},"
         jsonResult=jsonResult+"]"
         #result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y']
     jsonResult=jsonResult+"}"
