@@ -456,8 +456,9 @@ def pull_recommendation(request):
 ) 
 def expert_replay(request):
     #userID=request.authenticated_userid
+    userID="acct:admin@localhost"
     #print("USER: "+userID)
-    #fetch_result=fetch_all_user_sessions(userid=userID)
+    fetch_result=fetch_all_user_sessions(userid=userID)
 
     #table_results=[]
     #for result in fetch_result["table_result"]:
