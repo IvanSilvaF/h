@@ -456,15 +456,15 @@ def pull_recommendation(request):
 ) 
 def expert_replay(request):
     userID=request.authenticated_userid
+    print("USER: "+userID)
+    #fetch_result=fetch_all_user_sessions(userid=userID)
 
-    fetch_result=fetch_all_user_sessions(userid=userID)
-
-    table_results=[]
-    for result in fetch_result["table_result"]:
-        json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
-        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=result['doc_id'])
+    #table_results=[]
+    #for result in fetch_result["table_result"]:
+    #    json_item = {'session_id': result['doc_id'], 'task_name': result['interaction_context']}
+    #    fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=result['doc_id'])
         #result['event_type'],result['tag_name'],result['text_content'],result['event_source'],result['offset_x'],result['offset_y']
-        table_results.append(json_item)
+    #    table_results.append(json_item)
     #print(userID)
     return {
             "succ": "test API Ivan"
