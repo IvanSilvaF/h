@@ -455,8 +455,8 @@ def pull_recommendation(request):
     description="get the session of the expert replay",
 ) 
 def expert_replay(request):
-    userID=request.authenticated_userid
-    print("USER: "+userID)
+    #userID=request.authenticated_userid
+    #print("USER: "+userID)
     #fetch_result=fetch_all_user_sessions(userid=userID)
 
     #table_results=[]
