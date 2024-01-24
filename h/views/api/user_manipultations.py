@@ -463,16 +463,17 @@ def expert_replay(request):
     resultAllEvents=fetch_all_user_sessions(userid=userID)
 
     dictResult={}
-    eventlist=[]
+    #eventlist=[]
     auxDict=[]
     auxSessions={}
     for resultSesions in resultAllEvents["table_result"]:#For the taskName and session
         print(str(resultSesions['interaction_context']))
-        auxSessions.clear()
-        eventlist.clear()
+        
+        eventlist=[]
         fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID="4")# Get the event of each session
         for resultTask in fetch_result["table_result"]:
             eventlist.append({"type": str(resultTask['event_type']), "url" : str(resultTask['base_url']), "xpath" : str(resultTask['x_path']),"text" : str(resultTask['text_content']), "offsetX": str(resultTask['offset_x']), "offsetY": str(resultTask['offset_y'])})
+        auxSessions.clear()
         auxSessions={"task name": str(resultSesions['interaction_context']), "steps":eventlist}
         auxDict.append(auxSessions)
     dictResult['data']=auxDict
