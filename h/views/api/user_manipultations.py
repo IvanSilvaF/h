@@ -467,9 +467,10 @@ def expert_replay(request):
     auxDict=[]
     auxSessions={}
     for result in resultAllEvents["table_result"]:
+        print(str(result['interaction_context']))
         auxSessions.clear()
         eventlist.clear()
-        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID=4)
+        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID="4")
         for result in fetch_result["table_result"]:
             eventlist.append(result)
         auxSessions={"task name": str(result['interaction_context']), "steps":eventlist}
