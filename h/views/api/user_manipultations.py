@@ -466,14 +466,14 @@ def expert_replay(request):
     eventlist=[]
     auxDict=[]
     auxSessions={}
-    for result in resultAllEvents["table_result"]:
-        print(str(result['interaction_context']))
+    for resultSesions in resultAllEvents["table_result"]:#For the taskName and session
+        print(str(resultSesions['interaction_context']))
         auxSessions.clear()
         eventlist.clear()
-        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID="4")
-        for result in fetch_result["table_result"]:
-            eventlist.append({"type": str(result['event_type']), "url" : str(result['base_url']), "xpath" : str(result['x_path']),"text" : str(result['text_content']), "offsetX": str(result['offset_x']), "offsetY": str(result['offset_y'])})
-        auxSessions={"task name": str(result['interaction_context']), "steps":eventlist}
+        fetch_result=fetch_all_user_events_by_session(userid=userID, sessionID="4")# Get the event of each session
+        for resultTask in fetch_result["table_result"]:
+            eventlist.append({"type": str(resultTask['event_type']), "url" : str(resultTask['base_url']), "xpath" : str(resultTask['x_path']),"text" : str(resultTask['text_content']), "offsetX": str(resultTask['offset_x']), "offsetY": str(resultTask['offset_y'])})
+        auxSessions={"task name": str(resultSesions['interaction_context']), "steps":eventlist}
         auxDict.append(auxSessions)
     dictResult['data']=auxDict
     return dictResult
