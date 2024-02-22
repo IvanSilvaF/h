@@ -1,11 +1,5 @@
 {% extends "h:templates/layouts/kmass-account2.html.jinja2" %}
 
-{% block page_content %}
-<div>
-  <button onclick="capture_screen()">Capture Screen</button>
-</div>
-{% endblock page_content %}
-
 <script>
   function capture_screen(){
     alert("Entro")
@@ -18,3 +12,10 @@
   }
 
 </script>
+
+{% block page_content %}
+<div>
+  <h3 id="demo" onclick="capture_screen()">Capture Screen</h3>
+</div>
+{% endblock page_content %}
+
