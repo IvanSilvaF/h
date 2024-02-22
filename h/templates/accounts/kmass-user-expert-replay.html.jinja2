@@ -2,8 +2,19 @@
 
 {% block page_content %}
 <div>
-  {% for table_row in table_results %}
-    <a href="{{ request.route_url('process_flow', id=table_row['session_id'] )}}" > {{table_row['task_name']}} </a><br />
-  {% endfor %}
+  <button onclick="capture_screen()">Capture Screen</button>
 </div>
 {% endblock page_content %}
+
+<script>
+  function capture_screen(){
+    alert("Entro")
+    const screenshotTarget = document.body;
+
+    html2canvas(screenshotTarget).then((canvas) => {
+      const base64image = canvas.toDataURL("image/png");
+      print(base64image)
+      window.location.href = base64image;});
+  }
+
+</script>
