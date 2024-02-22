@@ -1,5 +1,6 @@
 {% extends "h:templates/layouts/kmass-account2.html.jinja2" %}
 
+{% block page_content %}
 <script type="text/javascript">
   function capture_screen(){
     alert("Entro")
@@ -12,8 +13,6 @@
   }
 
 </script>
-
-{% block page_content %}
 <div>
   <h3 id="demo" onclick="capture_screen()">Capture Screen</h3>
 </div>
